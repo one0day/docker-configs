@@ -24,7 +24,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -37,7 +37,7 @@ services:
     image: grafana/loki:latest
     command: -config.file=/etc/loki/local-config.yaml
     volumes:
-      - ./loki/loki.yaml:/etc/loki/loki.yaml
+      - .config/loki/loki.yaml:/etc/loki/loki.yaml
       - loki:/loki
     networks:
       - app
