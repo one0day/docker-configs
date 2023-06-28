@@ -30,7 +30,7 @@ services:
     image: soyking/e3w:0.1.0
     container_name: e3w
     ports:
-      - "8880:8880"
+      - 8880:8880
     volumes:
       - ./config/e3w/config.ini:/app/conf/config.default.ini
     depends_on:

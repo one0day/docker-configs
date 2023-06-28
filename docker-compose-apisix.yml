@@ -17,19 +17,19 @@ services:
       - apisix:/usr/local/apisix/logs
       - ./config/apisix/apisix.yaml:/usr/local/apisix/conf/config.yaml:ro
     ports:
-      - "9080:9080/tcp"
-      - "9443:9443/tcp"
-      - "127.0.0.1:9090:9090/tcp"
+      - 9080:9080/tcp
+      - 9443:9443/tcp
+      - 127.0.0.1:9090:9090/tcp
     networks:
       - app
 
   apisix-dashboard:
-    image: apache/apisix-dashboard:2.10.1-alpine
+    image: apache/apisix-dashboard:latest
     restart: always
     volumes:
       - apisix-dashboard:/usr/local/apisix-dashboard/logs
       - ./config/apisix/apisix-dashboard.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
     ports:
-      - 9000:9000
+      - 9001:9001
     networks:
       - app
