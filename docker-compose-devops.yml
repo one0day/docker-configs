@@ -1,0 +1,54 @@
+version: '3'
+
+networks:
+  app:
+    external: true
+
+volumes:
+  grafana:
+  loki:
+  prometheus:
+
+services:
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - grafana:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - app
+    ports:
+      - 3000:3000
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - app
+    ports:
+      - 9090:9090
+
+  loki:
+    image: grafana/loki:latest
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - ./loki/loki.yaml:/etc/loki/loki.yaml
+      - loki:/loki
+    networks:
+      - app
+    ports:
+      - 3100:3100
+
+  promtail:
+    image: grafana/promtail:latest
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+    networks:
+      - app
