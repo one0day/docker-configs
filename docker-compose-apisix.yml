@@ -1,0 +1,35 @@
+version: "3"
+
+networks:
+  app:
+    external: true
+
+volumes:
+  apisix:
+  apisix-dashboard:
+
+services:
+  apisix:
+    image: apache/apisix:latest
+    container_name: apisix
+    restart: always
+    volumes:
+      - apisix:/usr/local/apisix/logs
+      - ./config/apisix/apisix.yaml:/usr/local/apisix/conf/config.yaml:ro
+    ports:
+      - "9080:9080/tcp"
+      - "9443:9443/tcp"
+      - "127.0.0.1:9090:9090/tcp"
+    networks:
+      - app
+
+  apisix-dashboard:
+    image: apache/apisix-dashboard:2.10.1-alpine
+    restart: always
+    volumes:
+      - apisix-dashboard:/usr/local/apisix-dashboard/logs
+      - ./config/apisix/apisix-dashboard.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
+    ports:
+      - 9000:9000
+    networks:
+      - app

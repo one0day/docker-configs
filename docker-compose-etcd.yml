@@ -2,6 +2,7 @@ version: "3"
 
 networks:
   app:
+    external: true
 
 volumes:
   etcd:

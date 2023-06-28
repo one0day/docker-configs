@@ -1,0 +1,53 @@
+version: "3"
+
+volumes:
+  netmaker:
+
+networks:
+  app:
+    external: true
+
+services:
+  netmaker:
+    image: gravitl/netmaker:latest
+    container_name: netmaker
+    restart: always
+    privileged: true
+    volumes:
+      - /usr/bin/wg:/usr/bin/wg
+      - netmaker:/root/data
+    cap_add:
+      - NET_ADMIN
+    environment:
+      SERVER_HOST: left4dead2.me
+      GRPC_SSL: off
+      DNS_MODE: off
+      API_PORT: 8081
+      GRPC_PORT: 50051
+      CLIENT_MODE: on
+      MASTER_KEY: REPLACE_MASTER_KEY
+      SERVER_GRPC_WIREGUARD: off
+      CORS_ALLOWED_ORIGIN: *
+      DISPLAY_KEYS: on
+      DATABASE: sqlite
+      NODE_ID: netmaker-server-1
+    ports:
+      - 51821-51830:51821-51830/udp
+      - 8081:8081
+      - 50051:50051
+    networks:
+      - app
+
+  netmaker-ui:
+    image: gravitl/netmaker-ui:latest
+    container_name: netmaker-ui
+    restart: always
+    depends_on:
+      - netmaker
+    links:
+      - netmaker:api
+    ports:
+      - 8082:80
+    environment:
+      BACKEND_URL: http://left4dead2.me:8081
+

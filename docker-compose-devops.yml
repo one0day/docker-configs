@@ -2,6 +2,7 @@ version: '3'
 
 networks:
   app:
+    external: true
 
 volumes:
   grafana:
@@ -9,7 +10,6 @@ volumes:
   prometheus:
 
 services:
-
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
