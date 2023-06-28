@@ -35,9 +35,9 @@ services:
 
   loki:
     image: grafana/loki:latest
-    command: -config.file=/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/loki.yaml
     volumes:
-      - .config/loki/loki.yaml:/etc/loki/loki.yaml
+      - ./config/loki/loki.yaml:/etc/loki/loki.yaml
       - loki:/loki
     networks:
       - app
@@ -49,6 +49,6 @@ services:
     volumes:
       - ./config/promtail/promtail.yaml:/etc/promtail/promtail.yaml
       - /var/log:/var/log
-    command: -config.file=/etc/promtail/docker-config.yaml
+    command: -config.file=/etc/promtail/promtail.yaml
     networks:
       - app
