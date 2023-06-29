@@ -3,10 +3,6 @@ version: "3"
 volumes:
   netmaker:
 
-networks:
-  app:
-    external: true
-
 services:
   netmaker:
     image: gravitl/netmaker:latest
@@ -35,8 +31,7 @@ services:
       - 51821-51830:51821-51830/udp
       - 8081:8081
       - 50051:50051
-    networks:
-      - app
+    network_mode: host
 
   netmaker-ui:
     image: gravitl/netmaker-ui:latest
@@ -50,4 +45,5 @@ services:
       - 8082:80
     environment:
       BACKEND_URL: http://left4dead2.me:8081
+
 

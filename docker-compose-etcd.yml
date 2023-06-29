@@ -1,9 +1,5 @@
 version: "3"
 
-networks:
-  app:
-    external: true
-
 volumes:
   etcd:
 
@@ -23,8 +19,7 @@ services:
       - ALLOW_NONE_AUTHENTICATION=yes
     volumes:
       - etcd:/bitnami/etcd/data
-    networks:
-      - app
+    network_mode: host
 
   e3w:
     image: soyking/e3w:0.1.0
@@ -35,5 +30,4 @@ services:
       - ./config/e3w/config.ini:/app/conf/config.default.ini
     depends_on:
       - etcd
-    networks:
-      - app
+    network_mode: host

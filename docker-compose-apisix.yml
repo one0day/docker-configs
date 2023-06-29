@@ -1,9 +1,5 @@
 version: "3"
 
-networks:
-  app:
-    external: true
-
 volumes:
   apisix:
   apisix-dashboard:
@@ -20,8 +16,7 @@ services:
       - 9080:9080/tcp
       - 9443:9443/tcp
       - 127.0.0.1:9090:9090/tcp
-    networks:
-      - app
+    network_mode: host
 
   apisix-dashboard:
     image: apache/apisix-dashboard:latest
@@ -31,5 +26,4 @@ services:
       - ./config/apisix/apisix-dashboard.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
     ports:
       - 9001:9001
-    networks:
-      - app
+    network_mode: host

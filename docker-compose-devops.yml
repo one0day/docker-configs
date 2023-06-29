@@ -1,9 +1,5 @@
 version: '3'
 
-networks:
-  app:
-    external: true
-
 volumes:
   grafana:
   loki:
@@ -18,8 +14,7 @@ services:
       - grafana:/var/lib/grafana
     depends_on:
       - prometheus
-    networks:
-      - app
+    network_mode: host
     ports:
       - 3000:3000
 
@@ -32,10 +27,22 @@ services:
       - prometheus:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
-    networks:
-      - app
+    network_mode: host
     ports:
       - 9090:9090
+
+  node-exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: prometheus-node-exporter
+    restart: always
+    command:
+      - '--path.rootfs=/host'
+    volumes:
+      - /:/host:ro,rslave
+    ports:
+      - 9100:9100
+    network_mode: host
+    pid: host
 
   loki:
     image: grafana/loki:latest
@@ -46,8 +53,7 @@ services:
     volumes:
       - ./config/loki/loki.yaml:/etc/loki/loki.yaml
       - loki:/loki
-    networks:
-      - app
+    network_mode: host
     ports:
       - 3100:3100
 
@@ -61,5 +67,4 @@ services:
       - ./config/promtail/promtail.yaml:/etc/promtail/promtail.yaml
       - /var/log:/var/log
     command: -config.file=/etc/promtail/promtail.yaml
-    networks:
-      - app
+    network_mode: host
