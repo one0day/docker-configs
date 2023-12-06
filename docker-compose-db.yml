@@ -4,6 +4,7 @@ volumes:
   postgres:
   mysql:
   redis:
+  mongodb:
 
 services:
   redis:
@@ -21,13 +22,13 @@ services:
     ports:
       - 3306:3306
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --sql-mode=NO_ENGINE_SUBSTITUTION
+    volumes:
+      - mysql:/var/lib/mysql
+    network_mode: host
     environment:
       - MYSQL_ROOT_PASSWORD=@123456
       - MYSQL_ROOT_HOST=%
       - TZ=Asia/Shanghai
-    volumes:
-      - mysql:/var/lib/mysql
-    network_mode: host
 
   postgres:
     image: postgres:latest
@@ -35,9 +36,40 @@ services:
     restart: always
     ports:
       - 5432:5432
-    environment:
-      - POSTGRES_PASSWORD=@123456
-      - TZ=Asia/Shanghai
     volumes:
       - postgres:/var/lib/postgresql/data
     network_mode: host
+    environment:
+      - POSTGRES_PASSWORD=@123456
+      - TZ=Asia/Shanghai
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+    network_mode: host
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME: root
+      - MONGO_INITDB_ROOT_PASSWORD: @123456
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=root
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=@123456
+      - ME_CONFIG_BASICAUTH_USERNAME=root
+      - ME_CONFIG_BASICAUTH_PASSWORD=@123456
