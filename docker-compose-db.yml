@@ -5,6 +5,8 @@ volumes:
   mysql:
   redis:
   mongodb:
+  influxdb:
+  chronograf:
 
 services:
   redis:
@@ -64,6 +66,7 @@ services:
       - 8081:8081
     depends_on:
       - mongodb
+    network_mode: host
     environment:
       - ME_CONFIG_MONGODB_SERVER=mongo
       - ME_CONFIG_MONGODB_PORT=27017
@@ -73,3 +76,33 @@ services:
       - ME_CONFIG_MONGODB_AUTH_PASSWORD=@123456
       - ME_CONFIG_BASICAUTH_USERNAME=root
       - ME_CONFIG_BASICAUTH_PASSWORD=@123456
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    volumes:
+      - influxdb:/var/lib/influxdb2
+      - ./config/influxdb/config.yml:/etc/influxdb2
+    network_mode: host
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAM=root
+      - DOCKER_INFLUXDB_INIT_PASSWORD:=@123456
+      - DOCKER_INFLUXDB_INIT_ORG=Jack
+      - DOCKER_INFLUXDB_INIT_BUCKET=my-bucket
+
+  chronograf:
+      image: chronograf:latest
+      ports:
+        - 8888:8888
+      volumes:
+        - chronograf:/var/lib/chronograf
+      depends_on:
+        - influxdb
+      environment:
+        - INFLUXDB_URL=http://localhost:8086
+        - INFLUXDB_USERNAME=admin
+        - INFLUXDB_PASSWORD=@123456
