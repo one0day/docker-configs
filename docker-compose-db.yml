@@ -53,8 +53,8 @@ services:
       - mongodb:/data/db
     network_mode: host
     environment:
-      - MONGO_INITDB_ROOT_USERNAME: root
-      - MONGO_INITDB_ROOT_PASSWORD: @123456
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=@123456
 
   mongo-express:
     image: mongo-express:latest
