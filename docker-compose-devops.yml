@@ -54,7 +54,8 @@ services:
     restart: always
     ports:
       - 9121:9121
-    pid: host
+    environment:
+      - REDIS_ADDR=redis://localhost:6379
 
   loki:
     image: grafana/loki:latest
