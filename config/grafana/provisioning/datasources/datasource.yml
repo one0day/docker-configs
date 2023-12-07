@@ -5,27 +5,43 @@ deleteDatasources:
     orgId: 1
 
 datasources:
-  - name: Prometheus
-    type: prometheus
-    access: proxy
-    orgId: 1
-    url: http://localhost:9090
-    password:
-    user:
-    database:
-    basicAuth: false
-    basicAuthUser:
-    basicAuthPassword:
-    withCredentials:
-    isDefault: true
-    jsonData:
-       graphiteVersion: "1.1"
-       tlsAuth: false
-       tlsAuthWithCACert: false
+  - name: Postgres
+    type: postgres
+    url: localhost:5432
+    user: postgres
     secureJsonData:
-      tlsCACert: "..."
-      tlsClientCert: "..."
-      tlsClientKey: "..."
-    version: 1
-    editable: true
+      password: @123456
+    jsonData:
+      database: grafana
+      sslmode: 'disable' # disable/require/verify-ca/verify-full
+      maxOpenConns: 100 # Grafana v5.4+
+      maxIdleConns: 100 # Grafana v5.4+
+      maxIdleConnsAuto: true # Grafana v9.5.1+
+      connMaxLifetime: 14400 # Grafana v5.4+
+      postgresVersion: 903 # 903=9.3, 904=9.4, 905=9.5, 906=9.6, 1000=10
+      timescaledb: false
 
+  - name: Redis
+      type: redis-datasource
+      access: proxy
+      isDefault: true
+      orgId: 1
+      version: 1
+      url: redis://localhost:6379
+      jsonData:
+        poolSize: 5
+        timeout: 10
+        pingInterval: 0
+        pipelineWindow: 0
+      editable: true
+
+  - name: MongoDB
+      type: grafana-mongodb-datasource
+      access: proxy
+      basicAuth: false
+      editable: true
+      enabled: true
+      jsonData:
+        user: root
+      secureJsonData:
+        password: @123456

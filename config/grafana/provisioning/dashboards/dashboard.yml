@@ -10,10 +10,16 @@ providers:
     path: /etc/grafana/provisioning/dashboards
 
 - name: node
-  orgId: 1
+  orgId: 2
   folder: ''
   type: file
   disableDeletion: false
   editable: true
+  options:
+    path: /etc/grafana/provisioning/dashboards
+
+- name: redis
+  orgId: 3
+  type: file
   options:
     path: /etc/grafana/provisioning/dashboards
