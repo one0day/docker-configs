@@ -31,26 +31,62 @@ datasources:
       timescaledb: false
 
   - name: Redis
-      type: redis
-      access: proxy
-      isDefault: true
-      orgId: 1
-      version: 1
-      url: redis://localhost:6379
-      jsonData:
-        poolSize: 5
-        timeout: 10
-        pingInterval: 0
-        pipelineWindow: 0
-      editable: true
+    type: redis
+    access: proxy
+    isDefault: true
+    orgId: 1
+    version: 1
+    url: redis://localhost:6379
+    jsonData:
+      poolSize: 5
+      timeout: 10
+      pingInterval: 0
+      pipelineWindow: 0
+    editable: true
 
   - name: MongoDB
-      type: mongodb
-      access: proxy
-      basicAuth: false
-      editable: true
-      enabled: true
-      jsonData:
-        user: root
-      secureJsonData:
-        password: '@123456'
+    type: mongodb
+    access: proxy
+    basicAuth: false
+    editable: true
+    enabled: true
+    jsonData:
+      user: root
+    secureJsonData:
+      password: '@123456'
+
+  - name: InfluxDB_v2_Flux
+    type: influxdb
+    access: proxy
+    url: http://localhost:8086
+    jsonData:
+      version: Flux
+      organization: organization
+      defaultBucket: bucket
+      tlsSkipVerify: true
+    secureJsonData:
+      token: '@123456'
+
+#   - name: Elastic
+#     type: elasticsearch
+#     access: proxy
+#     url: http://localhost:9200
+#     jsonData:
+#       index: '[metrics-]YYYY.MM.DD'
+#       interval: Daily
+#       timeField: '@timestamp'
+#
+#   - name: elasticsearch-v7-filebeat
+#     type: elasticsearch
+#     access: proxy
+#     url: http://localhost:9200
+#     jsonData:
+#       index: '[filebeat-]YYYY.MM.DD'
+#       interval: Daily
+#       timeField: '@timestamp'
+#       logMessageField: message
+#       logLevelField: fields.level
+#       dataLinks:
+#         - datasourceUid: my_jaeger_uid # Target UID needs to be known
+#           field: traceID
+#           url: '$${__value.raw}' # Carefu

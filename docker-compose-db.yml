@@ -75,6 +75,7 @@ services:
       - DOCKER_INFLUXDB_INIT_PASSWORD=@123456
       - DOCKER_INFLUXDB_INIT_ORG=Jack
       - DOCKER_INFLUXDB_INIT_BUCKET=my-bucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=@123456
 
   chronograf:
       image: chronograf:latest
