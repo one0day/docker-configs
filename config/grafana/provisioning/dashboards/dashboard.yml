@@ -9,26 +9,26 @@ providers:
   options:
     path: /etc/grafana/provisioning/dashboards
 
-- name: node
-  orgId: 2
-  folder: ''
-  type: file
-  disableDeletion: false
-  editable: true
-  options:
-    path: /etc/grafana/provisioning/dashboards
-
-- name: postgres
-  orgId: 3
-  folder: ''
-  type: file
-  disableDeletion: false
-  editable: true
-  options:
-    path: /etc/grafana/provisioning/dashboards
-
-- name: redis
-  orgId: 4
-  type: file
-  options:
-    path: /etc/grafana/provisioning/dashboards
+# - name: node
+#   orgId: 2
+#   folder: ''
+#   type: file
+#   disableDeletion: false
+#   editable: true
+#   options:
+#     path: /etc/grafana/provisioning/dashboards
+#
+# - name: postgres
+#   orgId: 3
+#   folder: ''
+#   type: file
+#   disableDeletion: false
+#   editable: true
+#   options:
+#     path: /etc/grafana/provisioning/dashboards
+#
+# - name: redis
+#   orgId: 4
+#   type: file
+#   options:
+#     path: /etc/grafana/provisioning/dashboards

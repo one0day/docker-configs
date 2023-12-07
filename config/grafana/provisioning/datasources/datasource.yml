@@ -34,7 +34,6 @@ datasources:
     type: redis
     access: proxy
     isDefault: true
-    orgId: 1
     version: 1
     url: redis://localhost:6379
     jsonData:
