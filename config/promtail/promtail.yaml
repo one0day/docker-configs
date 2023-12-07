@@ -12,7 +12,7 @@ scrape_configs:
   - job_name: system
     static_configs:
     - targets:
-        - localhost
+        - left4dead2.me
       labels:
         job: varlogs
         __path__: /var/log/*log
@@ -24,7 +24,7 @@ scrape_configs:
           stages:
             - regex:
                 # apisix config: access_log_format: "$remote_addr - $remote_user [$time_local] $http_host \"$request\" $status $body_bytes_sent $request_time \"$http_referer\" \"$http_user_agent\" $upstream_addr $upstream_status $upstream_response_time \"$upstream_scheme://$upstream_host$upstream_uri\""
-                # e.g.: 172.19.0.1 - - [14/Jan/2022:07:42:17 +0000] localhost:9080 "PUT /apisix/admin/routes/1 HTTP/1.1" 403 150 0.000 "-" "curl/7.81.0" - - - "http://localhost:9080"
+                # e.g.: 172.19.0.1 - - [14/Jan/2022:07:42:17 +0000] left4dead2.me:9080 "PUT /apisix/admin/routes/1 HTTP/1.1" 403 150 0.000 "-" "curl/7.81.0" - - - "http://left4dead2.me:9080"
                 expression: '(?P<remote_addr>\S+) - (?P<remote_user>.+) \[(?P<ts>.+)\] (?P<host>[\.\w]+(:\d+)?) "(?P<method>\w+) (?P<path>\S+) (?P<protocol>\S+)" (?P<status>\d+)'
             - timestamp:
                 source: ts
@@ -49,12 +49,12 @@ scrape_configs:
                 level:
     static_configs:
       - targets:
-          - localhost
+          - left4dead2.me
         labels:
           job: apisix
           __path__: /var/aslog/apisix/*log
       - targets:
-          - localhost
+          - left4dead2.me
         labels:
           job: apisix-dashboard
           __path__: /var/aslog/apisix-dashboard/*log

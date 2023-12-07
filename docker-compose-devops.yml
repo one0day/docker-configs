@@ -55,7 +55,7 @@ services:
     ports:
       - 9187:9187
     environment:
-      - DATA_SOURCE_NAME=postgresql://postgres:@123456@localhost:5432/postgres
+      - DATA_SOURCE_NAME=postgresql://postgres:@123456@left4dead2.me:5432/postgres
 
   redis-exporter:
     image: oliver006/redis_exporter:latest
@@ -64,7 +64,7 @@ services:
     ports:
       - 9121:9121
     environment:
-      - REDIS_ADDR=redis://localhost:6379
+      - REDIS_ADDR=redis://left4dead2.me:6379
 
   loki:
     image: grafana/loki:latest

@@ -4,7 +4,7 @@ datasources:
   - name: Prometheus
     type: prometheus
     access: proxy
-    url: http://localhost:9090
+    url: http://left4dead2.me:9090
     jsonData:
       httpMethod: POST
       manageAlerts: true
@@ -16,7 +16,7 @@ datasources:
 
   - name: Postgres
     type: postgres
-    url: localhost:5432
+    url: left4dead2.me:5432
     user: postgres
     secureJsonData:
       password: '@123456'
@@ -33,7 +33,7 @@ datasources:
   - name: InfluxDB_v2_Flux
     type: influxdb
     access: proxy
-    url: http://localhost:8086
+    url: http://left4dead2.me:8086
     jsonData:
       version: Flux
       organization: organization
@@ -47,7 +47,7 @@ datasources:
 #     access: proxy
 #     isDefault: true
 #     version: 1
-#     url: redis://localhost:6379
+#     url: redis://left4dead2.me:6379
 #     jsonData:
 #       poolSize: 5
 #       timeout: 10
@@ -58,7 +58,7 @@ datasources:
 #   - name: Elastic
 #     type: elasticsearch
 #     access: proxy
-#     url: http://localhost:9200
+#     url: http://left4dead2.me:9200
 #     jsonData:
 #       index: '[metrics-]YYYY.MM.DD'
 #       interval: Daily
@@ -67,7 +67,7 @@ datasources:
 #   - name: elasticsearch-v7-filebeat
 #     type: elasticsearch
 #     access: proxy
-#     url: http://localhost:9200
+#     url: http://left4dead2.me:9200
 #     jsonData:
 #       index: '[filebeat-]YYYY.MM.DD'
 #       interval: Daily

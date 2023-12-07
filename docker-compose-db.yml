@@ -81,6 +81,6 @@ services:
       depends_on:
         - influxdb
       environment:
-        - INFLUXDB_URL=http://localhost:8086
+        - INFLUXDB_URL=http://left4dead2.me:8086
         - INFLUXDB_USERNAME=admin
         - INFLUXDB_PASSWORD=@123456
