@@ -18,8 +18,8 @@ datasources:
     type: postgres
     url: left4dead2.me:5432
     user: postgres
-    database: postgres
     jsonData:
+      database: postgres
       sslmode: 'disable' # disable/require/verify-ca/verify-full
       maxOpenConns: 100 # Grafana v5.4+
       maxIdleConns: 100 # Grafana v5.4+
@@ -34,8 +34,8 @@ datasources:
     type: mysql
     url: left4dead2.me:3306
     user: root
-    database: mysql
     jsonData:
+      database: mysql
       maxOpenConns: 100 # Grafana v5.4+
       maxIdleConns: 100 # Grafana v5.4+
       maxIdleConnsAuto: true # Grafana v9.5.1+

@@ -21,9 +21,8 @@ scrape_configs:
       - targets: ['left4dead2.me:9187']
 
   - job_name: cadvisor
-      scrape_interval: 5s
-      static_configs:
-        - targets: ['left4dead2.me:8080']
+    static_configs:
+      - targets: ['left4dead2.me:8080']
 
   - job_name: loki
     static_configs:
