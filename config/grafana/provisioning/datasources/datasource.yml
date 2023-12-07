@@ -19,7 +19,7 @@ datasources:
     url: localhost:5432
     user: postgres
     secureJsonData:
-      password: @123456
+      password: '@123456'
     jsonData:
       database: grafana
       sslmode: 'disable' # disable/require/verify-ca/verify-full
@@ -53,4 +53,4 @@ datasources:
       jsonData:
         user: root
       secureJsonData:
-        password: @123456
+        password: '@123456'
