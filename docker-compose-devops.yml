@@ -46,7 +46,18 @@ services:
       - /:/host:ro,rslave
     ports:
       - 9100:9100
-    pid: host
+
+  docker-exporter:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    restart: always
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 8080:8080
 
   postgres-exporter:
     image: prometheuscommunity/postgres-exporter:latest
