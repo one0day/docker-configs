@@ -15,7 +15,6 @@ services:
       - ./config/grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - prometheus
-    network_mode: host
     ports:
       - 3000:3000
     environment:
@@ -23,6 +22,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_INSTALL_PLUGINS=redis-explorer-app
       - GF_INSTALL_PLUGINS=redis-app
+      - GF_INSTALL_PLUGINS=grafana-mongodb-datasource
 
   prometheus:
     image: prom/prometheus:latest
@@ -33,7 +33,6 @@ services:
       - prometheus:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
-    network_mode: host
     ports:
       - 9090:9090
 
@@ -47,7 +46,14 @@ services:
       - /:/host:ro,rslave
     ports:
       - 9100:9100
-    network_mode: host
+    pid: host
+
+  redis-exporter:
+    image: oliver006/redis_exporter:latest
+    container_name: redis_exporter
+    restart: always
+    ports:
+      - 9121:9121
     pid: host
 
   loki:
@@ -59,7 +65,6 @@ services:
     volumes:
       - ./config/loki/loki.yaml:/etc/loki/loki.yaml
       - loki:/loki
-    network_mode: host
     ports:
       - 3100:3100
 

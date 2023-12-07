@@ -15,7 +15,6 @@ services:
     restart: always
     ports:
       - 6379:6379
-    network_mode: host
 
   mysql:
     image: mysql:latest
@@ -26,7 +25,6 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --sql-mode=NO_ENGINE_SUBSTITUTION
     volumes:
       - mysql:/var/lib/mysql
-    network_mode: host
     environment:
       - MYSQL_ROOT_PASSWORD=@123456
       - MYSQL_ROOT_HOST=%
@@ -40,7 +38,6 @@ services:
       - 5432:5432
     volumes:
       - postgres:/var/lib/postgresql/data
-    network_mode: host
     environment:
       - POSTGRES_PASSWORD=@123456
       - TZ=Asia/Shanghai
@@ -53,7 +50,6 @@ services:
       - 27017:27017
     volumes:
       - mongodb:/data/db
-    network_mode: host
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=@123456
@@ -68,7 +64,6 @@ services:
       - influxdb:/var/lib/influxdb2
       - ./config/influxdb/config.yml:/etc/influxdb2/config.yml
       - ./config/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
-    network_mode: host
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=root

@@ -21,7 +21,7 @@ datasources:
     secureJsonData:
       password: '@123456'
     jsonData:
-      database: grafana
+      database: postgres
       sslmode: 'disable' # disable/require/verify-ca/verify-full
       maxOpenConns: 100 # Grafana v5.4+
       maxIdleConns: 100 # Grafana v5.4+
@@ -29,30 +29,6 @@ datasources:
       connMaxLifetime: 14400 # Grafana v5.4+
       postgresVersion: 903 # 903=9.3, 904=9.4, 905=9.5, 906=9.6, 1000=10
       timescaledb: false
-
-  - name: Redis
-    type: redis
-    access: proxy
-    isDefault: true
-    version: 1
-    url: redis://localhost:6379
-    jsonData:
-      poolSize: 5
-      timeout: 10
-      pingInterval: 0
-      pipelineWindow: 0
-    editable: true
-
-  - name: MongoDB
-    type: mongodb
-    access: proxy
-    basicAuth: false
-    editable: true
-    enabled: true
-    jsonData:
-      user: root
-    secureJsonData:
-      password: '@123456'
 
   - name: InfluxDB_v2_Flux
     type: influxdb
@@ -66,6 +42,19 @@ datasources:
     secureJsonData:
       token: '@123456'
 
+#   - name: Redis
+#     type: redis
+#     access: proxy
+#     isDefault: true
+#     version: 1
+#     url: redis://localhost:6379
+#     jsonData:
+#       poolSize: 5
+#       timeout: 10
+#       pingInterval: 0
+#       pipelineWindow: 0
+#     editable: true
+#
 #   - name: Elastic
 #     type: elasticsearch
 #     access: proxy
