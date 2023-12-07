@@ -31,7 +31,7 @@ datasources:
       timescaledb: false
 
   - name: Redis
-      type: redis-datasource
+      type: redis
       access: proxy
       isDefault: true
       orgId: 1
@@ -45,7 +45,7 @@ datasources:
       editable: true
 
   - name: MongoDB
-      type: grafana-mongodb-datasource
+      type: mongodb
       access: proxy
       basicAuth: false
       editable: true
