@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_THEMIS",
-      "label": "prometheus",
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
       "description": "A prometheus server with prometheus server metrics",
       "type": "datasource",
       "pluginId": "prometheus",
