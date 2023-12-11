@@ -69,8 +69,6 @@ services:
     restart: always
     ports:
       - 9187:9187
-    depends_on:
-      - postgres
     environment:
       - DATA_SOURCE_NAME=postgresql://postgres:@123456@left4dead2.me:5432/postgres?sslmode=disable
 
@@ -80,8 +78,6 @@ services:
     restart: always
     ports:
       - 9104:9104
-    depends_on:
-      - mysql
     environment:
       - DATA_SOURCE_NAME=root:@123456@(mysql:3306)/mysql
 
@@ -91,8 +87,6 @@ services:
     restart: always
     ports:
       - 9121:9121
-    depends_on:
-      - redis
     environment:
       - REDIS_ADDR=redis://left4dead2.me:6379
 
@@ -104,8 +98,6 @@ services:
       - 9216:9216
     command:
       - '--mongodb.uri=mongodb://root:@123456@mongodb:27017'
-    depends_on:
-      - mongodb
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
