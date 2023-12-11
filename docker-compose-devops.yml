@@ -90,14 +90,14 @@ services:
     environment:
       - REDIS_ADDR=redis://left4dead2.me:6379
 
-  mongodb-exporter:
-    image: percona/mongodb_exporter:latest
-    container_name: mongodb_exporter
-    restart: always
-    ports:
-      - 9216:9216
-    command:
-      - '--mongodb.uri=mongodb://root:@123456@mongodb:27017'
+#   mongodb-exporter:
+#     image: percona/mongodb_exporter:latest
+#     container_name: mongodb_exporter
+#     restart: always
+#     ports:
+#       - 9216:9216
+#     command:
+#       - '--mongodb.uri=mongodb://root:@123456@mongodb:27017'
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
