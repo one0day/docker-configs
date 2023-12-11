@@ -79,7 +79,7 @@ services:
     ports:
       - 9104:9104
     environment:
-      - DATA_SOURCE_NAME=root:@123456@(mysql:3306)/mysql
+      - DATA_SOURCE_NAME=root:@123456@(left4dead2.me:3306)/mysql
 
   redis-exporter:
     image: oliver006/redis_exporter:latest
