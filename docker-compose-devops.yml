@@ -96,6 +96,35 @@ services:
     environment:
       - REDIS_ADDR=redis://left4dead2.me:6379
 
+  mongodb-exporter:
+    image: percona/mongodb_exporter:latest
+    container_name: mongodb_exporter
+    restart: always
+    ports:
+      - 9216:9216
+    command:
+      - '--mongodb.uri=mongodb://root:@123456@mongodb:27017'
+    depends_on:
+      - mongodb
+
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:latest
+    container_name: nginx_exporter
+    restart: always
+    ports:
+      - 9113:9113
+    command:
+      - '--nginx.scrape-uri=http://left4dead2.me/stub_status'
+
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    restart: always
+    ports:
+      - 9273:9273
+    volumes:
+      - ./config/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
   loki:
     image: grafana/loki:latest
     container_name: loki
