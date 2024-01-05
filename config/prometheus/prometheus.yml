@@ -6,40 +6,40 @@ global:
 scrape_configs:
   - job_name: prometheus
     static_configs:
-      - targets: ['left4dead2.me:9090']
+      - targets: ['107.172.133.222:9090']
 
   - job_name: node_exporter
     static_configs:
-      - targets: ['left4dead2.me:9100']
+      - targets: ['107.172.133.222:9100']
 
   - job_name: redis_exporter
     static_configs:
-      - targets: ['left4dead2.me:9121']
+      - targets: ['107.172.133.222:9121']
 
   - job_name: postgres_exporter
     static_configs:
-      - targets: ['left4dead2.me:9187']
+      - targets: ['107.172.133.222:9187']
 
   - job_name: mysql_exporter
     static_configs:
-      - targets: ['left4dead2.me:9104']
+      - targets: ['107.172.133.222:9104']
 
   - job_name: mongodb_exporter
     static_configs:
-      - targets: ['left4dead2.me:9216']
+      - targets: ['107.172.133.222:9216']
 
   - job_name: nginx_exporter
     static_configs:
-      - targets: ['left4dead2.me:9113']
+      - targets: ['107.172.133.222:9113']
 
   - job_name: cadvisor
     static_configs:
-      - targets: ['left4dead2.me:8080']
+      - targets: ['107.172.133.222:8080']
 
   - job_name: telegraf
     static_configs:
-      - targets: ['left4dead2.me:9273']
+      - targets: ['107.172.133.222:9273']
 
   - job_name: loki
     static_configs:
-      - targets: ['left4dead2.me:3100']
+      - targets: ['107.172.133.222:3100']

@@ -70,7 +70,7 @@ services:
     ports:
       - 9187:9187
     environment:
-      - DATA_SOURCE_NAME=postgresql://postgres:@123456@left4dead2.me:5432/postgres?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://postgres:@123456@107.172.133.222:5432/postgres?sslmode=disable
 
   mysql-exporter:
     image: prom/mysqld-exporter:latest
@@ -79,7 +79,7 @@ services:
     ports:
       - 9104:9104
     environment:
-      - DATA_SOURCE_NAME=root:@123456@(left4dead2.me:3306)/mysql
+      - DATA_SOURCE_NAME=root:@123456@(107.172.133.222:3306)/
 
   redis-exporter:
     image: oliver006/redis_exporter:latest
@@ -88,7 +88,7 @@ services:
     ports:
       - 9121:9121
     environment:
-      - REDIS_ADDR=redis://left4dead2.me:6379
+      - REDIS_ADDR=redis://107.172.133.222:6379
 
 #   mongodb-exporter:
 #     image: percona/mongodb_exporter:latest
@@ -106,7 +106,7 @@ services:
     ports:
       - 9113:9113
     command:
-      - '--nginx.scrape-uri=http://left4dead2.me/stub_status'
+      - '--nginx.scrape-uri=http://107.172.133.222/stub_status'
 
   telegraf:
     image: telegraf:latest
