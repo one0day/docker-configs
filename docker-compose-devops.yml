@@ -73,7 +73,7 @@ services:
       - DATA_SOURCE_NAME=postgresql://postgres:@123456@107.172.133.222:5432/postgres?sslmode=disable
 
   mysqld-exporter:
-    image: percona/mysqld-exporter:latest
+    image: percona/mysqld-exporter:0.40.0
     container_name: mysqld_exporter
     restart: always
     ports:
