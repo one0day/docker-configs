@@ -78,7 +78,7 @@ services:
     restart: always
     ports:
       - 9104:9104
-    volume:
+    volumes:
       - config.my-cnf=./config/mysqld_exporter/config.cnf
 
   redis-exporter:
@@ -90,14 +90,14 @@ services:
     environment:
       - REDIS_ADDR=redis://107.172.133.222:6379
 
-#   mongodb-exporter:
-#     image: percona/mongodb_exporter:latest
-#     container_name: mongodb_exporter
-#     restart: always
-#     ports:
-#       - 9216:9216
-#     command:
-#       - '--mongodb.uri=mongodb://root:@123456@mongodb:27017'
+  mongodb-exporter:
+    image: percona/mongodb_exporter:latest
+    container_name: mongodb_exporter
+    restart: always
+    ports:
+      - 9216:9216
+    command:
+      - '--mongodb.uri=mongodb://root:@123456@mongodb:27017'
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
