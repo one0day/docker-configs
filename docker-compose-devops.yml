@@ -91,7 +91,7 @@ services:
       - REDIS_ADDR=redis://107.172.133.222:6379
 
   mongodb-exporter:
-    image: percona/mongodb_exporter:latest
+    image: percona/mongodb_exporter:0.40.0
     container_name: mongodb_exporter
     restart: always
     ports:
