@@ -79,7 +79,7 @@ services:
     ports:
       - 9104:9104
     environment:
-      - DATA_SOURCE_NAME: 'root:@@123456(107.172.133.222:3306)/'
+      - DATA_SOURCE_NAME=root:@@123456(107.172.133.222:3306)
 
   redis-exporter:
     image: oliver006/redis_exporter:latest
