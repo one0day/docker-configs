@@ -78,7 +78,7 @@ services:
     restart: always
     ports:
       - 9104:9104
-    volumes:
+    environment:
       - DATA_SOURCE_NAME: 'root:@@123456(107.172.133.222:3306)/'
 
   redis-exporter:
