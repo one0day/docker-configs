@@ -79,7 +79,7 @@ services:
     ports:
       - 9104:9104
     volumes:
-      - config.my-cnf=./config/mysqld_exporter/config.cnf
+      - ./config/mysqld_exporter/config.cnf=config.my-cnf
 
   redis-exporter:
     image: oliver006/redis_exporter:latest
