@@ -48,7 +48,7 @@ services:
       - 9100:9100
 
   docker-exporter:
-    image: google/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     restart: always
     volumes:
@@ -73,13 +73,13 @@ services:
       - DATA_SOURCE_NAME=postgresql://postgres:@123456@107.172.133.222:5432/postgres?sslmode=disable
 
   mysqld-exporter:
-    image: prom/mysqld-exporter:latest
+    image: percona/mysqld-exporter:latest
     container_name: mysqld_exporter
     restart: always
     ports:
       - 9104:9104
-    command:
-      - '--config.my-cnf=./config/mysqld_exporter/config.cnf'
+    volumes:
+      - DATA_SOURCE_NAME: 'root:@@123456(107.172.133.222:3306)/'
 
   redis-exporter:
     image: oliver006/redis_exporter:latest
