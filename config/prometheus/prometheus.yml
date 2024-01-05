@@ -20,7 +20,7 @@ scrape_configs:
     static_configs:
       - targets: ['107.172.133.222:9187']
 
-  - job_name: mysql_exporter
+  - job_name: mysqld_exporter
     static_configs:
       - targets: ['107.172.133.222:9104']
 
