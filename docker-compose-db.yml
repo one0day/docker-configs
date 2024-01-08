@@ -74,6 +74,7 @@ services:
 
   chronograf:
       image: chronograf:latest
+      container_name: chronograf
       ports:
         - 8888:8888
       volumes:
@@ -83,4 +84,4 @@ services:
       environment:
         - INFLUXDB_URL=http://107.172.133.222:8086
         - INFLUXDB_USERNAME=admin
-        - INFLUXDB_PASSWORD=@123456
+        - INFLUXDB_PASSWORD=@12345678
