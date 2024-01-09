@@ -96,8 +96,9 @@ services:
     restart: always
     ports:
       - 9216:9216
+      - 17001:17001
     command:
-      - '--mongodb.uri=mongodb://root:@123456@mongodb:27017'
+      - '--mongodb.uri=mongodb://107.172.133.222:17001'
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
