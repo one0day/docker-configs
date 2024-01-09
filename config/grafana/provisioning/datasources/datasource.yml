@@ -30,18 +30,30 @@ datasources:
     secureJsonData:
       password: '@123456'
 
-  - name: MySQL
-    type: mysql
-    url: 107.172.133.222:3306
-    user: root
+  - name: MongoDB
+    type: grafana-mongodb-datasource
+    access: proxy
+    basicAuth: false
+    editable: true
+    enabled: true
     jsonData:
-      database: mysql
-      maxOpenConns: 100 # Grafana v5.4+
-      maxIdleConns: 100 # Grafana v5.4+
-      maxIdleConnsAuto: true # Grafana v9.5.1+
-      connMaxLifetime: 14400 # Grafana v5.4+
+      connection: mongodb://107.172.133.222:27017
+      user: root
     secureJsonData:
       password: '@123456'
+
+#   - name: MySQL
+#     type: mysql
+#     url: 107.172.133.222:3306
+#     user: root
+#     jsonData:
+#       database: mysql
+#       maxOpenConns: 100
+#       maxIdleConns: 100
+#       maxIdleConnsAuto: true
+#       connMaxLifetime: 14400
+#     secureJsonData:
+#       password: '@123456'
 
   - name: InfluxDB_v2_Flux
     type: influxdb
@@ -49,25 +61,22 @@ datasources:
     url: http://107.172.133.222:8086
     jsonData:
       version: Flux
-      organization: organization
-      defaultBucket: bucket
+      organization: default
+      defaultBucket: default
       tlsSkipVerify: true
     secureJsonData:
       token: '@12345678'
 
-#   - name: Redis
-#     type: redis
-#     access: proxy
-#     isDefault: true
-#     version: 1
-#     url: redis://107.172.133.222:6379
-#     jsonData:
-#       poolSize: 5
-#       timeout: 10
-#       pingInterval: 0
-#       pipelineWindow: 0
-#     editable: true
-#
+  - name: Redis
+    type: redis
+    access: proxy
+    isDefault: true
+    version: 1
+    url: redis://107.172.133.222:6379
+    jsonData:
+      tlsAuth: false
+      tlsSkipVerify: true
+
 #   - name: Elastic
 #     type: elasticsearch
 #     access: proxy

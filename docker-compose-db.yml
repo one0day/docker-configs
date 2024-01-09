@@ -16,19 +16,19 @@ services:
     ports:
       - 6379:6379
 
-  mysql:
-    image: mysql:latest
-    container_name: mysql
-    restart: always
-    ports:
-      - 3306:3306
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --sql-mode=NO_ENGINE_SUBSTITUTION
-    volumes:
-      - mysql:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=@123456
-      - MYSQL_ROOT_HOST=%
-      - TZ=Asia/Shanghai
+#   mysql:
+#     image: mysql:latest
+#     container_name: mysql
+#     restart: always
+#     ports:
+#       - 3306:3306
+#     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --sql-mode=NO_ENGINE_SUBSTITUTION
+#     volumes:
+#       - mysql:/var/lib/mysql
+#     environment:
+#       - MYSQL_ROOT_PASSWORD=@123456
+#       - MYSQL_ROOT_HOST=%
+#       - TZ=Asia/Shanghai
 
   postgres:
     image: postgres:latest
@@ -68,8 +68,8 @@ services:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=root
       - DOCKER_INFLUXDB_INIT_PASSWORD=@12345678
-      - DOCKER_INFLUXDB_INIT_ORG=Jack
-      - DOCKER_INFLUXDB_INIT_BUCKET=my-bucket
+      - DOCKER_INFLUXDB_INIT_ORG=default
+      - DOCKER_INFLUXDB_INIT_BUCKET=default
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=@12345678
 
 #   chronograf:
