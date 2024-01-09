@@ -61,8 +61,8 @@ datasources:
     url: http://107.172.133.222:8086
     jsonData:
       version: Flux
-      organization: default
-      defaultBucket: default
+      organization: jack
+      defaultBucket: jack
       tlsSkipVerify: true
     secureJsonData:
       token: '@12345678'

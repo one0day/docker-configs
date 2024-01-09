@@ -72,33 +72,33 @@ services:
     environment:
       - DATA_SOURCE_NAME=postgresql://postgres:@123456@107.172.133.222:5432/postgres?sslmode=disable
 
-  mysqld-exporter:
-    image: prom/mysqld-exporter:latest
-    container_name: mysqld_exporter
-    restart: always
-    ports:
-      - 9104:9104
-    environment:
-      - DATA_SOURCE_NAME=root:@@123456(107.172.133.222:3306)
+#   mysqld-exporter:
+#     image: prom/mysqld-exporter:latest
+#     container_name: mysqld_exporter
+#     restart: always
+#     ports:
+#       - 9104:9104
+#     environment:
+#       - DATA_SOURCE_NAME=root:@@123456(107.172.133.222:3306)
 
-  redis-exporter:
-    image: oliver006/redis_exporter:latest
-    container_name: redis_exporter
-    restart: always
-    ports:
-      - 9121:9121
-    environment:
-      - REDIS_ADDR=redis://107.172.133.222:6379
+#   redis-exporter:
+#     image: oliver006/redis_exporter:latest
+#     container_name: redis_exporter
+#     restart: always
+#     ports:
+#       - 9121:9121
+#     environment:
+#       - REDIS_ADDR=redis://107.172.133.222:6379
 
-  mongodb-exporter:
-    image: percona/mongodb_exporter:0.40.0
-    container_name: mongodb_exporter
-    restart: always
-    ports:
-      - 9216:9216
-      - 17001:17001
-    command:
-      - '--mongodb.uri=mongodb://107.172.133.222:17001'
+#   mongodb-exporter:
+#     image: percona/mongodb_exporter:0.40.0
+#     container_name: mongodb_exporter
+#     restart: always
+#     ports:
+#       - 9216:9216
+#       - 17001:17001
+#     command:
+#       - '--mongodb.uri=mongodb://107.172.133.222:17001'
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
