@@ -53,7 +53,7 @@ datasources:
       defaultBucket: bucket
       tlsSkipVerify: true
     secureJsonData:
-      token: '@123456'
+      token: '@12345678'
 
 #   - name: Redis
 #     type: redis

@@ -72,16 +72,16 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=my-bucket
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=@12345678
 
-  chronograf:
-      image: chronograf:latest
-      container_name: chronograf
-      ports:
-        - 8888:8888
-      volumes:
-        - chronograf:/var/lib/chronograf
-      depends_on:
-        - influxdb
-      environment:
-        - INFLUXDB_URL=http://107.172.133.222:8086
-        - INFLUXDB_USERNAME=admin
-        - INFLUXDB_PASSWORD=@12345678
+#   chronograf:
+#       image: chronograf:latest
+#       container_name: chronograf
+#       ports:
+#         - 8888:8888
+#       volumes:
+#         - chronograf:/var/lib/chronograf
+#       depends_on:
+#         - influxdb
+#       environment:
+#         - INFLUXDB_URL=http://107.172.133.222:8086
+#         - INFLUXDB_USERNAME=admin
+#         - INFLUXDB_PASSWORD=@12345678
