@@ -15,7 +15,7 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      SERVER_HOST: 107.172.133.222
+      SERVER_HOST: your_ip
       GRPC_SSL: off
       DNS_MODE: off
       API_PORT: 8081
@@ -44,6 +44,6 @@ services:
     ports:
       - 8082:80
     environment:
-      BACKEND_URL: http://107.172.133.222:8081
+      BACKEND_URL: http://your_ip:8081
 
 
