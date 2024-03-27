@@ -15,7 +15,7 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      SERVER_HOST: your_ip
+      SERVER_HOST: 172.16.0.3
       GRPC_SSL: off
       DNS_MODE: off
       API_PORT: 8081
@@ -31,7 +31,6 @@ services:
       - 51821-51830:51821-51830/udp
       - 8081:8081
       - 50051:50051
-    network_mode: host
 
   netmaker-ui:
     image: gravitl/netmaker-ui:latest
@@ -44,6 +43,6 @@ services:
     ports:
       - 8082:80
     environment:
-      BACKEND_URL: http://your_ip:8081
+      BACKEND_URL: http://172.16.0.3:8081
 
 

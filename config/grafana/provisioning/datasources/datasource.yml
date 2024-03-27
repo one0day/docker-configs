@@ -4,7 +4,7 @@ datasources:
   - name: Prometheus
     type: prometheus
     access: proxy
-    url: http://your_ip:9090
+    url: http://172.16.0.3:9090
     jsonData:
       httpMethod: POST
       manageAlerts: true
@@ -16,7 +16,7 @@ datasources:
 
   - name: Postgres
     type: postgres
-    url: your_ip:5432
+    url: 172.16.0.3:5432
     user: postgres
     jsonData:
       database: postgres
@@ -37,14 +37,14 @@ datasources:
     editable: true
     enabled: true
     jsonData:
-      connection: mongodb://your_ip:27017
+      connection: mongodb://172.16.0.3:27017
       user: root
     secureJsonData:
       password: '@123456'
 
 #   - name: MySQL
 #     type: mysql
-#     url: your_ip:3306
+#     url: 172.16.0.3:3306
 #     user: root
 #     jsonData:
 #       database: mysql
@@ -58,7 +58,7 @@ datasources:
   - name: InfluxDB_v2_Flux
     type: influxdb
     access: proxy
-    url: http://your_ip:8086
+    url: http://172.16.0.3:8086
     jsonData:
       version: Flux
       organization: jack
@@ -72,7 +72,7 @@ datasources:
     access: proxy
     isDefault: true
     version: 1
-    url: redis://your_ip:6379
+    url: redis://172.16.0.3:6379
     jsonData:
       tlsAuth: false
       tlsSkipVerify: true
@@ -80,7 +80,7 @@ datasources:
 #   - name: Elastic
 #     type: elasticsearch
 #     access: proxy
-#     url: http://your_ip:9200
+#     url: http://172.16.0.3:9200
 #     jsonData:
 #       index: '[metrics-]YYYY.MM.DD'
 #       interval: Daily
@@ -89,7 +89,7 @@ datasources:
 #   - name: elasticsearch-v7-filebeat
 #     type: elasticsearch
 #     access: proxy
-#     url: http://your_ip:9200
+#     url: http://172.16.0.3:9200
 #     jsonData:
 #       index: '[filebeat-]YYYY.MM.DD'
 #       interval: Daily

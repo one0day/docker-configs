@@ -70,7 +70,7 @@ services:
     ports:
       - 9187:9187
     environment:
-      - DATA_SOURCE_NAME=postgresql://postgres:@123456@your_ip:5432/postgres?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://postgres:@123456@172.16.0.3:5432/postgres?sslmode=disable
 
 #   mysqld-exporter:
 #     image: prom/mysqld-exporter:latest
@@ -79,7 +79,7 @@ services:
 #     ports:
 #       - 9104:9104
 #     environment:
-#       - DATA_SOURCE_NAME=root:@@123456(your_ip:3306)
+#       - DATA_SOURCE_NAME=root:@@123456(172.16.0.3:3306)
 
 #   redis-exporter:
 #     image: oliver006/redis_exporter:latest
@@ -88,7 +88,7 @@ services:
 #     ports:
 #       - 9121:9121
 #     environment:
-#       - REDIS_ADDR=redis://your_ip:6379
+#       - REDIS_ADDR=redis://172.16.0.3:6379
 
 #   mongodb-exporter:
 #     image: percona/mongodb_exporter:0.40.0
@@ -98,7 +98,7 @@ services:
 #       - 9216:9216
 #       - 17001:17001
 #     command:
-#       - '--mongodb.uri=mongodb://your_ip:17001'
+#       - '--mongodb.uri=mongodb://172.16.0.3:17001'
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
@@ -107,7 +107,7 @@ services:
     ports:
       - 9113:9113
     command:
-      - '--nginx.scrape-uri=http://your_ip/stub_status'
+      - '--nginx.scrape-uri=http://172.16.0.3/stub_status'
 
   telegraf:
     image: telegraf:latest
@@ -139,4 +139,3 @@ services:
       - ./config/promtail/promtail.yaml:/etc/promtail/promtail.yaml
       - /var/log:/var/log
     command: -config.file=/etc/promtail/promtail.yaml
-    network_mode: host

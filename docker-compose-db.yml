@@ -82,6 +82,6 @@ services:
 #       depends_on:
 #         - influxdb
 #       environment:
-#         - INFLUXDB_URL=http://your_ip:8086
+#         - INFLUXDB_URL=http://172.16.0.3:8086
 #         - INFLUXDB_USERNAME=admin
 #         - INFLUXDB_PASSWORD=@12345678

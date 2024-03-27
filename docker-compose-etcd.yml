@@ -21,7 +21,6 @@ services:
       - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
     volumes:
       - etcd:/bitnami/etcd/data
-    network_mode: host
 
   e3w:
     image: evildecay/etcdkeeper:latest
@@ -34,4 +33,3 @@ services:
     command: ["-h", "0.0.0.0", "-p", "8080", "--etcdhosts", "http://etcd:2379"]
     depends_on:
       - etcd
-    network_mode: host
