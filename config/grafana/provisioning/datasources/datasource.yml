@@ -42,18 +42,18 @@ datasources:
     secureJsonData:
       password: '@123456'
 
-#   - name: MySQL
-#     type: mysql
-#     url: 172.16.0.3:3306
-#     user: root
-#     jsonData:
-#       database: mysql
-#       maxOpenConns: 100
-#       maxIdleConns: 100
-#       maxIdleConnsAuto: true
-#       connMaxLifetime: 14400
-#     secureJsonData:
-#       password: '@123456'
+  - name: MySQL
+    type: mysql
+    url: 172.16.0.3:3306
+    user: root
+    jsonData:
+      database: mysql
+      maxOpenConns: 100
+      maxIdleConns: 100
+      maxIdleConnsAuto: true
+      connMaxLifetime: 14400
+    secureJsonData:
+      password: '@123456'
 
   - name: InfluxDB_v2_Flux
     type: influxdb

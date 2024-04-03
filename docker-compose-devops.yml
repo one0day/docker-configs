@@ -72,14 +72,14 @@ services:
     environment:
       - DATA_SOURCE_NAME=postgresql://postgres:@123456@172.16.0.3:5432/postgres?sslmode=disable
 
-#   mysqld-exporter:
-#     image: prom/mysqld-exporter:latest
-#     container_name: mysqld_exporter
-#     restart: always
-#     ports:
-#       - 9104:9104
-#     environment:
-#       - DATA_SOURCE_NAME=root:@@123456(172.16.0.3:3306)
+  mysqld-exporter:
+    image: prom/mysqld-exporter:latest
+    container_name: mysqld_exporter
+    restart: always
+    ports:
+      - 9104:9104
+    environment:
+      - DATA_SOURCE_NAME=root:@@123456(172.16.0.3:3306)
 
 #   redis-exporter:
 #     image: oliver006/redis_exporter:latest
